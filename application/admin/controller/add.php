@@ -10,9 +10,16 @@ namespace app\index\controller;
 use think\Controller;
 use think\Db;
 use think\Loader;
-
+use app\admin\model\Admin as AdminModel;
 class add extends Controller
 {
+
+    public function getPage(){
+        $list= AdminModel::paginate(3);
+        $this->assign('list',$list);
+        $this->fetch();
+    }
+
     public function index(){
         if (request()->isPost()){
 
